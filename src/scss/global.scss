@@ -1,20 +1,10 @@
-/* flex */
-.flex {
-  display: flex;
-}
+a[href] {
+  font-weight: 500;
+  color: #000;
+  text-decoration: none;
 
-.flex-item-center {
-  align-items: center;
-}
-
-.flex-center {
-  justify-content: center;
-}
-
-.flex-down {
-  flex-direction: column;
-}
-
-.text-center {
-  text-align: center;
+  &:hover {
+    color: #07f;
+    text-decoration: underline;
+  }
 }
