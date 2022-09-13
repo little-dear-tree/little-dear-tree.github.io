@@ -38,38 +38,20 @@ const props = defineProps<{
 const pageTitle = props.pageTitle || '';
 
 let _title: string | void = void 0;
-if (pageTitle) _title = `vue3-typescript-template | ${pageTitle}`;
+if (pageTitle) _title = `小鹿樹教育文化協會 | ${pageTitle}`;
 
 const image = props.image || '/favicon.ico';
 const keywords = (
   props.keywords || [
-    'vue',
-    'vue3',
-    'vue-router',
-    'vue-ts',
-    'typescript',
-    'yarn',
-    'vite',
-    'pinia',
-    'vite-ssg',
-    'template',
+    '小鹿樹教育文化協會',
+    'Little.Dear.Tree',
+    '臺南市小鹿樹教育文化協會',
   ]
 )?.join(',');
 
 const description =
   props.description ||
-  `${[
-    'vue',
-    'vue3',
-    'vue-router',
-    'vue-ts',
-    'typescript',
-    'yarn',
-    'vite',
-    'pinia',
-    'vite-ssg',
-    'template',
-  ].join(', ')} demo. 開發人員: 猴子(猴貓)`;
+  '小鹿樹教育文化協會，致力於實踐教育正義及文化平權，透過音樂劇製作計畫等方式，激發孩子潛能，許孩子一個勇於為自己發聲的未來。因為看見台灣教育及文化資源不平等的問題，小鹿樹教育文化協會長期與偏鄉學校及社福機構合作，開發「心靈教育系統」（Spiritual Education System），並透過兒童音樂劇計畫、中英語讀寫創作等課程，導入文學、藝術、哲學、表演等素養刺激，啟迪兒童潛能與表達能力。小鹿樹兒少音樂劇團、地方合作音樂劇製作計畫、中英語心靈寫作課程。我們願賦予孩子為自己發聲的力量，建構一個平等而具有生命力的共好社會。';
 
-const title = _title || props.title || 'vue3-typescript-template';
+const title = _title || props.title || '小鹿樹教育文化協會';
 </script>
