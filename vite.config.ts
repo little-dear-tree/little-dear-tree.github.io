@@ -3,6 +3,7 @@
 import 'vite-ssg';
 import { defineConfig } from 'vite';
 import { fileURLToPath, URL } from 'url';
+import * as fs from 'fs';
 
 import vue from '@vitejs/plugin-vue';
 import { generateSitemap } from 'sitemap-ts';
@@ -12,7 +13,38 @@ import svgIcon from './plugin/svgIcon';
 // https://vitejs.dev/config/
 export default defineConfig({
   base: process.env.BASE_URL,
-  plugins: [vue(), svgIcon()],
+  plugins: [
+    vue(),
+    svgIcon(),
+    {
+      name: 'fix-swipper-css',
+      enforce: 'pre',
+      resolveId(id) {
+        const [hasSwiper, children] = id.match(/swiper(?:\/(\w+))?\.css/) || [
+          void 0,
+        ];
+
+        if (hasSwiper) return `fix-swiper${children ? `/${children}` : ''}.css`;
+      },
+      async load(id) {
+        const [hasSwiper, children] = id.match(/fix-swiper(\/\w+)?\.css/) || [
+          void 0,
+        ];
+
+        if (hasSwiper) {
+          let fileName: string;
+
+          if (children === '/all') fileName = 'swiper-bundle';
+          fileName ||= children ? `/modules${children.repeat(2)}` : 'swiper';
+
+          return fs.readFileSync(
+            `./node_modules/swiper/${fileName}.min.css`,
+            'utf-8'
+          );
+        }
+      },
+    },
+  ],
   resolve: { alias: { '@': fileURLToPath(new URL('./src', import.meta.url)) } },
   build: {
     terserOptions: {

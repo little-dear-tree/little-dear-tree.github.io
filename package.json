@@ -17,6 +17,7 @@
     "@vueuse/head": "^0.7.6",
     "pinia": "^2.0.14",
     "sitemap-ts": "^0.2.2",
+    "swiper": "^8.3.2",
     "vite": "^2.9.12",
     "vite-plugin-svg-icons": "^2.0.1",
     "vite-ssg": "^0.20.2",
