@@ -27,6 +27,8 @@
 <script lang="ts" setup>
 import { Head } from '@vueuse/head';
 
+import logo from '@/assets/image/logo.jpg';
+
 const props = defineProps<{
   title?: string;
   pageTitle?: string;
@@ -35,7 +37,7 @@ const props = defineProps<{
   image?: string;
 }>();
 
-const pageTitle = props.pageTitle || '';
+const pageTitle = props.pageTitle || logo;
 
 let _title: string | void = void 0;
 if (pageTitle) _title = `小鹿樹教育文化協會 | ${pageTitle}`;
