@@ -2,8 +2,28 @@
 import 'swiper.css';
 import 'swiper/all.css';
 
-import { Autoplay, Grid, EffectCards } from 'swiper';
+import { Autoplay, Pagination, EffectCreative } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/vue';
+
+interface DescriptionType {
+  image: string;
+  title?: string;
+  description?: string;
+  to?: string;
+  more?: string;
+}
+
+const descriptionImages: DescriptionType[] = [
+  ...Array.from({ length: 10 }).map(
+    (_, index): DescriptionType => ({
+      image: `https://picsum.photos/400?c=${index}`,
+      title: 'image title',
+      description: 'description',
+      to: 'https://google.com',
+      more: '/more',
+    })
+  ),
+];
 </script>
 
 <template>
@@ -11,13 +31,41 @@ import { Swiper, SwiperSlide } from 'swiper/vue';
     <swiper
       loop
       grab-cursor
-      :slides-per-view="4"
-      :allow-touch-move="false"
-      :autoplay="{ delay: 10 * 1e3 }"
-      :modules="[Autoplay, Grid, EffectCards]"
-      class="pics-slide-block"
+      effect="creative"
+      direction="vertical"
+      :pagination="{ clickable: true }"
+      :creative-effect="{
+        prev: {
+          shadow: true,
+          origin: 'left center',
+          translate: ['-5%', 0, -200],
+          rotate: [0, 100, 0],
+        },
+        next: {
+          origin: 'right center',
+          translate: ['5%', 0, -200],
+          rotate: [0, -100, 0],
+        },
+      }"
+      :modules="[Autoplay, Pagination, EffectCreative]"
+      :autoplay="{ delay: 1e3, disableOnInteraction: false }"
+      class="description-slide-block"
     >
-      <swiper-slide v-for="i in 15" :key="i">{{ i }}</swiper-slide>
+      <swiper-slide v-for="(img, index) in descriptionImages" :key="index">
+        <a :href="img.to" class="info">
+          <div
+            role="img"
+            :style="{ '--image-url': `url(${img.image})` }"
+            :title="img.title"
+            :aria-label="img.title"
+          ></div>
+          <div class="description">
+            <h2 v-text="img.title"></h2>
+            <p v-text="img.description"></p>
+            <a :href="img.more">更多</a>
+          </div>
+        </a>
+      </swiper-slide>
     </swiper>
 
     <div class="content">
@@ -34,4 +82,42 @@ import { Swiper, SwiperSlide } from 'swiper/vue';
   </section>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+#description-section {
+  display: grid;
+  max-width: 800px;
+  margin: auto;
+}
+
+.description-slide-block {
+  width: 800px;
+  height: 250px;
+
+  .swiper-slide {
+    width: 100%;
+    height: 100%;
+  }
+
+  .info {
+    display: flex;
+
+    div[role='img'] {
+      width: 400px;
+      height: 400px;
+      background-image: var(--image-url);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .description {
+      display: flex;
+      width: 400px;
+      height: 250px;
+      background-color: red;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+}
+</style>

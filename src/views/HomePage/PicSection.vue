@@ -1,11 +1,8 @@
 <script setup lang="ts">
 import 'swiper.css';
-import 'swiper/all.css';
 
-import { Autoplay, Pagination } from 'swiper';
+import { Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/vue';
-
-const modules = [Autoplay, Pagination];
 
 const images = [
   { url: 'https://picsum.photos/1000/500?c=0', alt: 'test' },
@@ -21,7 +18,7 @@ const images = [
       loop
       :allow-touch-move="false"
       :autoplay="{ delay: 10 * 1e3 }"
-      :modules="modules"
+      :modules="[Autoplay]"
       class="pics-slide-block"
     >
       <swiper-slide v-for="(img, index) in images" :key="index">
