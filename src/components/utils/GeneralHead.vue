@@ -11,9 +11,13 @@
 
     <meta name="keywords" :content="keywords" />
 
-    <meta property="og:image" :content="image" />
-    <meta property="og:image:secure_url" :content="image" />
-    <meta property="twitter:image" :content="image" />
+    <meta v-if="image !== null" property="og:image" :content="image" />
+    <meta
+      v-if="image !== null"
+      property="og:image:secure_url"
+      :content="image"
+    />
+    <meta v-if="image !== null" property="twitter:image" :content="image" />
 
     <meta name="theme-color" content="#ffffff" />
     <meta property="og:type" content="website" />
@@ -34,7 +38,7 @@ const props = defineProps<{
   pageTitle?: string;
   keywords?: string[];
   description?: string;
-  image?: string;
+  image?: string | null;
 }>();
 
 const pageTitle = props.pageTitle || '';
@@ -42,7 +46,7 @@ const pageTitle = props.pageTitle || '';
 let _title: string | void = void 0;
 if (pageTitle) _title = `小鹿樹教育文化協會 | ${pageTitle}`;
 
-const image = props.image || logo;
+const image = props.image === null ? null : props.image || logo;
 const keywords = (
   props.keywords || [
     '小鹿樹教育文化協會',
