@@ -37,12 +37,12 @@ const props = defineProps<{
   image?: string;
 }>();
 
-const pageTitle = props.pageTitle || logo;
+const pageTitle = props.pageTitle || '';
 
 let _title: string | void = void 0;
 if (pageTitle) _title = `小鹿樹教育文化協會 | ${pageTitle}`;
 
-const image = props.image || '/favicon.ico';
+const image = props.image || logo;
 const keywords = (
   props.keywords || [
     '小鹿樹教育文化協會',
