@@ -2,10 +2,10 @@
 import 'swiper.css';
 import 'swiper/all.css';
 
-import { Autoplay, Controller, Pagination } from 'swiper';
+import { Autoplay, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 
-const modules = [Autoplay, Pagination, Controller];
+const modules = [Autoplay, Pagination];
 
 const images = [
   { url: 'https://picsum.photos/1000/500?c=0', alt: 'test' },
@@ -16,17 +16,19 @@ const images = [
 </script>
 
 <template>
-  <swiper
-    loop
-    :allow-touch-move="false"
-    :autoplay="{ delay: 10 * 1e3 }"
-    :modules="modules"
-    class="pics-slide-block"
-  >
-    <swiper-slide v-for="(img, index) in images" :key="index">
-      <div :style="{ '--image-url': `url(${img.url})` }"></div>
-    </swiper-slide>
-  </swiper>
+  <section id="pic-section">
+    <swiper
+      loop
+      :allow-touch-move="false"
+      :autoplay="{ delay: 10 * 1e3 }"
+      :modules="modules"
+      class="pics-slide-block"
+    >
+      <swiper-slide v-for="(img, index) in images" :key="index">
+        <div :style="{ '--image-url': `url(${img.url})` }"></div>
+      </swiper-slide>
+    </swiper>
+  </section>
 </template>
 
 <style lang="scss" scoped>

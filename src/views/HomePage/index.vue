@@ -1,10 +1,18 @@
 <script setup lang="ts">
-import PicBoxVue from './PicBox.vue';
+import 'swiper.css';
+import 'swiper/all.css';
+
+import PicSection from './PicSection.vue';
+import DescriptionSection from './DescriptionSection.vue';
+import PurposeSection from './PurposeSection.vue';
 </script>
 
 <template>
   <GeneralHead />
-  <PicBoxVue />
+
+  <PicSection />
+  <DescriptionSection />
+  <PurposeSection />
 </template>
 
 <style lang="scss" scoped></style>
