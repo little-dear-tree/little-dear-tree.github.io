@@ -30,9 +30,11 @@ const descriptionImages: DescriptionType[] = [
   <section id="description-section">
     <swiper
       loop
+      lazy
       grab-cursor
       effect="creative"
       direction="vertical"
+      :preload-images="false"
       :pagination="{ clickable: true }"
       :creative-effect="{
         prev: {
@@ -102,12 +104,21 @@ const descriptionImages: DescriptionType[] = [
     display: flex;
 
     div[role='img'] {
+      position: relative;
       width: 400px;
       height: 400px;
       background-image: var(--image-url);
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
+
+      &::after {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-image: url('https://picsum.photos/400?c=1');
+        content: '';
+      }
     }
 
     .description {
