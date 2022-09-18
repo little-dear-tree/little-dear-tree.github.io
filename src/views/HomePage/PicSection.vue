@@ -22,7 +22,7 @@ const images = [
       class="pics-slide-block"
     >
       <swiper-slide v-for="(img, index) in images" :key="index">
-        <div :style="{ '--image-url': `url(${img.url})` }"></div>
+        <div lazy-load :style="{ '--image-url': `url(${img.url})` }"></div>
       </swiper-slide>
     </swiper>
   </section>

@@ -50,12 +50,13 @@ const descriptionImages: DescriptionType[] = [
         },
       }"
       :modules="[Autoplay, Pagination, EffectCreative]"
-      :autoplay="{ delay: 1e3, disableOnInteraction: false }"
+      :autoplay="{ delay: 1e4, disableOnInteraction: false }"
       class="description-slide-block"
     >
       <swiper-slide v-for="(img, index) in descriptionImages" :key="index">
         <a :href="img.to" class="info">
           <div
+            lazy-load
             role="img"
             :style="{ '--image-url': `url(${img.image})` }"
             :title="img.title"
@@ -86,14 +87,42 @@ const descriptionImages: DescriptionType[] = [
 
 <style lang="scss" scoped>
 #description-section {
-  display: grid;
-  max-width: 800px;
+  display: flex;
+  align-items: center;
+  width: 90%;
   margin: auto;
+
+  @media all and (max-width: 1420px) {
+    flex-direction: column;
+
+    .description-slide-block {
+      min-width: auto;
+    }
+  }
 }
 
 .description-slide-block {
-  width: 800px;
+  width: 700px;
   height: 250px;
+  min-width: 700px;
+  margin: 20px auto;
+
+  @media all and (max-width: 750px) {
+    width: 95%;
+    height: 500px;
+
+    .info {
+      flex-direction: column;
+
+      div[role='img'] {
+        width: 100% !important;
+      }
+
+      .description {
+        width: 100% !important;
+      }
+    }
+  }
 
   .swiper-slide {
     width: 100%;
@@ -105,30 +134,34 @@ const descriptionImages: DescriptionType[] = [
 
     div[role='img'] {
       position: relative;
-      width: 400px;
-      height: 400px;
+      width: 50%;
+      height: 250px;
       background-image: var(--image-url);
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
-
-      &::after {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background-image: url('https://picsum.photos/400?c=1');
-        content: '';
-      }
     }
 
     .description {
       display: flex;
-      width: 400px;
+      width: 50%;
       height: 250px;
       background-color: red;
       flex-direction: column;
       justify-content: center;
     }
+  }
+}
+
+.content {
+  margin-left: 1em;
+
+  .title {
+    font-size: 25pt;
+  }
+
+  .description {
+    font-size: 13pt;
   }
 }
 </style>
