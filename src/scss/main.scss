@@ -17,6 +17,8 @@ html,
 
 [lazy-load],
 .lazy-load {
+  position: relative;
+
   &::after {
     position: absolute;
     z-index: -1;
