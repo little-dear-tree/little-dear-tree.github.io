@@ -3,7 +3,6 @@ interface DescriptionType {
   image: string;
   title?: string;
   description?: string;
-  to?: string;
   more?: string;
 }
 
@@ -13,7 +12,6 @@ const descriptionImages: DescriptionType[] = [
       image: `https://picsum.photos/400?c=${index}`,
       title: 'image title',
       description: 'description',
-      to: 'https://google.com',
       more: '/more',
     })
   ),
@@ -28,6 +26,8 @@ const descriptionImages: DescriptionType[] = [
           <LImg :src="img.image" />
         </div>
         <div class="right">
+          <h1 v-text="img.title"></h1>
+          <span v-text="img.description"></span>
           <a class="more" :href="img.more">更多</a>
         </div>
       </div>
@@ -72,38 +72,59 @@ const descriptionImages: DescriptionType[] = [
 
     &:nth-child(2n + 1) {
       flex-direction: row-reverse;
+
+      .right {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+
+        .more {
+          left: 0;
+        }
+      }
     }
 
     .right {
-      display: flex;
+      position: relative;
       width: 400px;
       height: 400px;
-    }
 
-    .more {
-      position: relative;
-      padding: 2px;
-      margin-left: 1em;
-      font-size: 1.4rem;
-      font-weight: 900;
-      text-decoration: none;
-
-      &:hover::after {
-        animation: more-hover 0.5s forwards cubic-bezier(0.8, 0.1, 0.1, 0.8);
+      h1 {
+        font-size: 3rem;
       }
 
-      &::after {
+      span {
+        font-size: 1.5rem;
+        text-align: center;
+      }
+
+      .more {
         position: absolute;
+        right: 0;
         bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 2px;
-        background-color: #000;
-        content: '';
-        transform: scaleX(0);
-        backface-visibility: hidden;
-        will-change: transform;
-        transform-origin: center right;
+        padding: 2px;
+        margin-left: 1em;
+        font-size: 1.4rem;
+        font-weight: 900;
+        text-decoration: none;
+
+        &:hover::after {
+          animation: more-hover 0.5s forwards cubic-bezier(0.8, 0.1, 0.1, 0.8);
+        }
+
+        &::after {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 2px;
+          background-color: #000;
+          content: '';
+          transform: scaleX(0);
+          backface-visibility: hidden;
+          will-change: transform;
+          transform-origin: center right;
+        }
       }
     }
   }
