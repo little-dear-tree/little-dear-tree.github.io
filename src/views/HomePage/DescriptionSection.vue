@@ -8,7 +8,7 @@ interface DescriptionType {
 }
 
 const descriptionImages: DescriptionType[] = [
-  ...Array.from({ length: 10 }).map(
+  ...Array.from({ length: 5 }).map(
     (_, index): DescriptionType => ({
       image: `https://picsum.photos/400?c=${index}`,
       title: 'image title',
@@ -51,7 +51,6 @@ const descriptionImages: DescriptionType[] = [
   display: flex;
   align-items: center;
   flex-direction: column;
-  width: 90%;
   margin: auto;
 }
 
@@ -61,10 +60,15 @@ const descriptionImages: DescriptionType[] = [
   .case {
     display: flex;
     width: 80%;
+    max-width: 1200px;
     margin: 3em auto;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
+
+    @media all and (max-width: 1020px) {
+      justify-content: center;
+    }
 
     &:nth-child(2n + 1) {
       flex-direction: row-reverse;

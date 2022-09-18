@@ -34,6 +34,10 @@ const onError = ({ target }: Event) => (target as HTMLDivElement).remove();
 .lazy-load {
   position: relative;
 
+  .lazy-preloader {
+    display: none;
+  }
+
   &:not(.done) {
     width: 10px;
     height: 10px;
@@ -41,6 +45,7 @@ const onError = ({ target }: Event) => (target as HTMLDivElement).remove();
     .lazy-preloader {
       top: 50%;
       left: 50%;
+      display: block;
       width: 100px;
       height: 100px;
       transform-origin: 50%;
