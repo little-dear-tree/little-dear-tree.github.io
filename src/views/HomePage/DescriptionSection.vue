@@ -79,6 +79,7 @@ const descriptionImages: DescriptionType[] = [
         align-items: flex-end;
 
         .more {
+          right: inherit;
           left: 0;
         }
       }
