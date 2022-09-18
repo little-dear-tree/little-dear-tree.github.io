@@ -3,10 +3,12 @@ import BaseFooterVue from '@/components/BaseFooter.vue';
 import BaseHeaderVue from '@/components/BaseHeader.vue';
 
 import DevelopmentMoe from '@/components/DevelopmentMoe.vue';
+
+const { DEV } = import.meta.env;
 </script>
 
 <template>
-  <DevelopmentMoe />
+  <DevelopmentMoe v-if="!DEV" />
   <BaseHeaderVue class="header" />
   <div class="content">
     <router-view />
