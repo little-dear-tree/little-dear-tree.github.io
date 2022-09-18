@@ -1,7 +1,4 @@
-<script setup lang="ts">
-import 'swiper.css';
-import 'swiper/all.css';
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <section id="purpose-section">

@@ -14,6 +14,8 @@
   },
   "dependencies": {
     "@vue/eslint-config-typescript": "^11.0.0",
+    "@vueuse/components": "^9.2.0",
+    "@vueuse/core": "^9.2.0",
     "@vueuse/head": "^0.7.6",
     "pinia": "^2.0.14",
     "sitemap-ts": "^0.2.2",

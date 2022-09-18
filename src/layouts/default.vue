@@ -1,9 +1,12 @@
 <script setup lang="ts">
 import BaseFooterVue from '@/components/BaseFooter.vue';
 import BaseHeaderVue from '@/components/BaseHeader.vue';
+
+import DevelopmentMoe from '@/components/DevelopmentMoe.vue';
 </script>
 
 <template>
+  <DevelopmentMoe />
   <BaseHeaderVue class="header" />
   <div class="content">
     <router-view />

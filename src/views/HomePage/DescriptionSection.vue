@@ -1,10 +1,4 @@
 <script setup lang="ts">
-import 'swiper.css';
-import 'swiper/all.css';
-
-import { Autoplay, Pagination, EffectCreative } from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/vue';
-
 interface DescriptionType {
   image: string;
   title?: string;
@@ -28,49 +22,16 @@ const descriptionImages: DescriptionType[] = [
 
 <template>
   <section id="description-section">
-    <swiper
-      loop
-      lazy
-      grab-cursor
-      effect="creative"
-      direction="vertical"
-      :preload-images="false"
-      :pagination="{ clickable: true }"
-      :creative-effect="{
-        prev: {
-          shadow: true,
-          origin: 'left center',
-          translate: ['-5%', 0, -200],
-          rotate: [0, 100, 0],
-        },
-        next: {
-          origin: 'right center',
-          translate: ['5%', 0, -200],
-          rotate: [0, -100, 0],
-        },
-      }"
-      :modules="[Autoplay, Pagination, EffectCreative]"
-      :autoplay="{ delay: 1e4, disableOnInteraction: false }"
-      class="description-slide-block"
-    >
-      <swiper-slide v-for="(img, index) in descriptionImages" :key="index">
-        <a :href="img.to" class="info">
-          <div
-            lazy-load
-            role="img"
-            :style="{ '--image-url': `url(${img.image})` }"
-            :title="img.title"
-            :aria-label="img.title"
-          ></div>
-          <div class="description">
-            <h2 v-text="img.title"></h2>
-            <p v-text="img.description"></p>
-            <a :href="img.more">更多</a>
-          </div>
-        </a>
-      </swiper-slide>
-    </swiper>
-
+    <div class="cases">
+      <div v-for="(img, index) in descriptionImages" :key="index" class="case">
+        <div class="left">
+          <LImg :src="img.image" />
+        </div>
+        <div class="right">
+          <a class="more" :href="img.more">更多</a>
+        </div>
+      </div>
+    </div>
     <div class="content">
       <h1 class="title">小鹿樹教育文化協會/Little.Dear.Tree</h1>
       <span class="description">
@@ -89,66 +50,57 @@ const descriptionImages: DescriptionType[] = [
 #description-section {
   display: flex;
   align-items: center;
+  flex-direction: column;
   width: 90%;
   margin: auto;
-
-  @media all and (max-width: 1420px) {
-    flex-direction: column;
-
-    .description-slide-block {
-      min-width: auto;
-    }
-  }
 }
 
-.description-slide-block {
-  width: 700px;
-  height: 250px;
-  min-width: 700px;
-  margin: 20px auto;
+.cases {
+  width: 100%;
 
-  @media all and (max-width: 750px) {
-    width: 95%;
-    height: 500px;
-
-    .info {
-      flex-direction: column;
-
-      div[role='img'] {
-        width: 100% !important;
-      }
-
-      .description {
-        width: 100% !important;
-      }
-    }
-  }
-
-  .swiper-slide {
-    width: 100%;
-    height: 100%;
-  }
-
-  .info {
+  .case {
     display: flex;
+    width: 80%;
+    margin: 3em auto;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
 
-    div[role='img'] {
-      position: relative;
-      width: 50%;
-      height: 250px;
-      background-image: var(--image-url);
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
+    &:nth-child(2n + 1) {
+      flex-direction: row-reverse;
     }
 
-    .description {
+    .right {
       display: flex;
-      width: 50%;
-      height: 250px;
-      background-color: red;
-      flex-direction: column;
-      justify-content: center;
+      width: 400px;
+      height: 400px;
+    }
+
+    .more {
+      position: relative;
+      padding: 2px;
+      margin-left: 1em;
+      font-size: 1.4rem;
+      font-weight: 900;
+      text-decoration: none;
+
+      &:hover::after {
+        animation: more-hover 0.5s forwards cubic-bezier(0.8, 0.1, 0.1, 0.8);
+      }
+
+      &::after {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: #000;
+        content: '';
+        transform: scaleX(0);
+        backface-visibility: hidden;
+        will-change: transform;
+        transform-origin: center right;
+      }
     }
   }
 }
@@ -162,6 +114,28 @@ const descriptionImages: DescriptionType[] = [
 
   .description {
     font-size: 13pt;
+  }
+}
+
+@keyframes more-hover {
+  0% {
+    transform: scale(1);
+    transform-origin: center right;
+  }
+
+  50% {
+    transform: scaleX(0);
+    transform-origin: center right;
+  }
+
+  55% {
+    transform: scaleX(0);
+    transform-origin: center left;
+  }
+
+  to {
+    transform: scale(1);
+    transform-origin: center left;
   }
 }
 </style>
