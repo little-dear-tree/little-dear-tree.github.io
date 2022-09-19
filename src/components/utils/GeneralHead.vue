@@ -29,9 +29,13 @@
 </template>
 
 <script lang="ts" setup>
-import { Head } from '@vueuse/head';
+import { unref, onMounted } from 'vue';
+import { MaybeRef } from '@vueuse/core';
+import { HeadObject, useHead } from '@vueuse/head';
+import type { JsonLdObj } from 'jsonld/jsonld-spec';
 
 import logo from '@/assets/image/logo.jpg';
+import { ArrayOrType } from '@/utils';
 
 const props = defineProps<{
   title?: string;
@@ -39,6 +43,7 @@ const props = defineProps<{
   keywords?: string[];
   description?: string;
   image?: string | null;
+  jsonLd?: MaybeRef<ArrayOrType<JsonLdObj>>;
 }>();
 
 const pageTitle = props.pageTitle || '';
@@ -60,4 +65,19 @@ const description =
   '小鹿樹教育文化協會，致力於實踐教育正義及文化平權，透過音樂劇製作計畫等方式，激發孩子潛能，許孩子一個勇於為自己發聲的未來。因為看見台灣教育及文化資源不平等的問題，小鹿樹教育文化協會長期與偏鄉學校及社福機構合作，開發「心靈教育系統」（Spiritual Education System），並透過兒童音樂劇計畫、中英語讀寫創作等課程，導入文學、藝術、哲學、表演等素養刺激，啟迪兒童潛能與表達能力。小鹿樹兒少音樂劇團、地方合作音樂劇製作計畫、中英語心靈寫作課程。我們願賦予孩子為自己發聲的力量，建構一個平等而具有生命力的共好社會。';
 
 const title = _title || props.title || '小鹿樹教育文化協會/Little.Dear.Tree';
+
+onMounted(() => {
+  const jsonLd: ArrayOrType<JsonLdObj> | undefined = unref(props.jsonLd);
+  if (!jsonLd) return;
+
+  useHead({
+    script: (Array.isArray(jsonLd) ? jsonLd : [jsonLd]).map((data) => ({
+      type: 'application/ld+json',
+      children: JSON.stringify({
+        '@context': 'https://schema.org/',
+        ...data,
+      } as JsonLdObj),
+    })),
+  });
+});
 </script>
