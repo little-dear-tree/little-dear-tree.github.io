@@ -4,7 +4,7 @@ import 'virtual:svg-icons-register';
 import router from './router';
 
 import '@/scss/main.scss';
-import store from './stores';
+// import store from './stores';
 
 import App from '@/layouts/default.vue';
 import BaseImg from '@/components/utils/BaseImg.vue';
@@ -15,7 +15,7 @@ export const createApp = ViteSSG(
   App,
   router,
   ({ app }) => {
-    app.use(store);
+    // app.use(store);
     app.component('LImg', BaseImg);
     app.component('SvgIcon', SvgIconComponent);
     app.component('GeneralHead', GeneralHeadComponent);

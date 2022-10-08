@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { reactive } from 'vue';
-import descriptionImagesData from '@/data/HomePage/images.yaml';
+
+import descriptionImagesData from '@/data/HomePage/about.yaml';
 import FadeInUpScrollVue from '@/components/utils/anim/FadeInUpScroll.vue';
 
 interface DescriptionType {
