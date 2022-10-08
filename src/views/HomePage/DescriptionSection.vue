@@ -13,23 +13,22 @@ const modules = import.meta.glob('../../**/*');
 
 const descriptionImages = reactive<DescriptionType[]>([]);
 
-(descriptionImagesData as DescriptionType[]).map(async (data) => {
+(descriptionImagesData as DescriptionType[]).map(async (data, index) => {
   const { image } = data;
 
   if (!image.startsWith('@/')) {
-    descriptionImages.push(data);
+    descriptionImages.splice(index, 0, data);
     return;
   }
 
   await modules[image.replace(/^@\//, '../../')]().then((module) => {
-    descriptionImages.push({ ...data, image: module.default });
+    descriptionImages.splice(index, 0, { ...data, image: module.default });
   });
 });
 </script>
 
 <template>
   <section id="description-section">
-    {{ descriptionImages }}
     <div class="cases">
       <FadeInUpScrollVue
         v-for="(img, index) in descriptionImages"
@@ -137,16 +136,4 @@ const descriptionImages = reactive<DescriptionType[]>([]);
     }
   }
 }
-
-/* .content {
-  margin-left: 1em;
-
-  .title {
-    font-size: 25pt;
-  }
-
-  .description {
-    font-size: 13pt;
-  }
-} */
 </style>

@@ -23,7 +23,7 @@ export default defineConfig({
       transform(code, id) {
         if (!/\.ya?ml$/.test(id)) return null;
 
-        const data = tosource(JSON.parse(JSON.stringify(parse(code))));
+        const data = tosource(parse(code));
 
         return `const data = ${data};\nexport default data`;
       },

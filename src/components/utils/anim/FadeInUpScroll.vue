@@ -40,7 +40,7 @@ useIntersectionObserver(rootEl, props.callback || defaultCallback, {
     transform: translateY(100px);
   }
 
-  to {
+  100% {
     opacity: 1;
     transform: translateY(0);
   }
