@@ -22,7 +22,12 @@ const descriptionImages: DescriptionType[] = [
 <template>
   <section id="description-section">
     <div class="cases">
-      <div v-for="(img, index) in descriptionImages" :key="index" class="case">
+      <FadeInUpScrollVue
+        v-for="(img, index) in descriptionImages"
+        :key="index"
+        one
+        class="case"
+      >
         <div class="description">
           <h1 v-if="Array.isArray(img.title)">
             <template v-for="(title, index) in img.title" :key="index">
@@ -37,7 +42,7 @@ const descriptionImages: DescriptionType[] = [
         <div class="image">
           <LImg :src="img.image" />
         </div>
-      </div>
+      </FadeInUpScrollVue>
     </div>
     <!-- <div class="content">
       <h1 class="title">小鹿樹教育文化協會/Little.Dear.Tree</h1>

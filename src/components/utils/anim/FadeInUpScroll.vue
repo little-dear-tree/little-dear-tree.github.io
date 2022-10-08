@@ -23,7 +23,7 @@ const defaultCallback = (
   [{ isIntersecting }]: IntersectionObserverEntry[],
   _observer: IntersectionObserver
 ) => {
-  if (props.one || props.one === void 0) isVisible.value ??= isIntersecting;
+  if (props.one === void 0 || props.one) isVisible.value ||= isIntersecting;
   else isVisible.value = isIntersecting;
 };
 
@@ -46,8 +46,13 @@ useIntersectionObserver(rootEl, props.callback || defaultCallback, {
   }
 }
 
-.fade-in-up-scroll.isVisible {
+.fade-in-up-scroll {
+  opacity: 0;
   animation-duration: 0.8s;
-  animation-name: fade-in-up;
+  animation-fill-mode: forwards;
+
+  &.isVisible {
+    animation-name: fade-in-up;
+  }
 }
 </style>
