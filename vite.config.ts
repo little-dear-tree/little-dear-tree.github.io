@@ -5,6 +5,8 @@ import { defineConfig } from 'vite';
 import { fileURLToPath, URL } from 'url';
 import * as fs from 'fs';
 
+import tosource from 'tosource';
+import { parse } from 'yaml';
 import vue from '@vitejs/plugin-vue';
 import { generateSitemap } from 'sitemap-ts';
 
@@ -16,6 +18,16 @@ export default defineConfig({
   plugins: [
     vue(),
     svgIcon(),
+    {
+      name: 'vite:transform-yaml:',
+      transform(code, id) {
+        if (!/\.ya?ml$/.test(id)) return null;
+
+        const data = tosource(JSON.parse(JSON.stringify(parse(code))));
+
+        return `const data = ${data};\nexport default data`;
+      },
+    },
     {
       name: 'fix-swipper-css',
       enforce: 'pre',

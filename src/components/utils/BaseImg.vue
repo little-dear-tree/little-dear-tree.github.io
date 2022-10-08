@@ -17,6 +17,7 @@ const onError = ({ target }: Event) => (target as HTMLDivElement).remove();
 
 <template>
   <div
+    img
     class="lazy-load"
     :data-src="src"
     :data-srcset="srcset"
