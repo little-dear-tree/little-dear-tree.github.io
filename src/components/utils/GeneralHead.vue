@@ -31,7 +31,7 @@
 <script lang="ts" setup>
 import { unref, onMounted } from 'vue';
 import { MaybeRef } from '@vueuse/core';
-import { HeadObject, useHead } from '@vueuse/head';
+import { useHead, Head } from '@vueuse/head';
 import type { JsonLdObj } from 'jsonld/jsonld-spec';
 
 import logo from '@/assets/image/logo.jpg';

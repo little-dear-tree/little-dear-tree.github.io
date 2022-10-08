@@ -1,18 +1,17 @@
 <script setup lang="ts">
 interface DescriptionType {
   image: string;
-  title?: string;
+  title?: string | string[];
   description?: string;
-  more?: string;
 }
 
 const descriptionImages: DescriptionType[] = [
   ...Array.from({ length: 5 }).map(
     (_, index): DescriptionType => ({
-      image: `https://picsum.photos/400?c=${index}`,
-      title: 'image title',
-      description: 'description',
-      more: '/more',
+      image: `https://picsum.photos/600/400?c=${index}`,
+      title: ['title', '標題'],
+      description:
+        '帶著這些問題，我們一起來審視標皮。我以為我了解標皮，但我真的了解標皮嗎？仔細想想，我對標皮的理解只是皮毛而已。泰戈爾深信，生活並不是一條人工開鑿的運河，不能把河水媽限制在一些規定好了的河道內。希望大家能發現話中之話。既然如此，對於標皮，我們不能不去想，卻也不能走火入魔。賈爾斯說過一句很有意思的話，一切最文明的東西所具有的價值，自由都具備。這激勵了我。',
     })
   ),
 ];
@@ -22,17 +21,23 @@ const descriptionImages: DescriptionType[] = [
   <section id="description-section">
     <div class="cases">
       <div v-for="(img, index) in descriptionImages" :key="index" class="case">
-        <div class="left">
-          <LImg :src="img.image" />
+        <div class="description">
+          <h1 v-if="Array.isArray(img.title)">
+            <template v-for="(title, index) in img.title" :key="index">
+              <span v-text="title"></span>
+              <br />
+            </template>
+          </h1>
+          <h1 v-else v-text="img.title"></h1>
+
+          <p v-text="img.description"></p>
         </div>
-        <div class="right">
-          <h1 v-text="img.title"></h1>
-          <span v-text="img.description"></span>
-          <a class="more" :href="img.more">更多</a>
+        <div class="image">
+          <LImg :src="img.image" />
         </div>
       </div>
     </div>
-    <div class="content">
+    <!-- <div class="content">
       <h1 class="title">小鹿樹教育文化協會/Little.Dear.Tree</h1>
       <span class="description">
         我們是由一群志同道合，貢獻所長並打破本位框架的夥伴們所組成並致力於推動
@@ -42,7 +47,7 @@ const descriptionImages: DescriptionType[] = [
         文化平權與教育正義。
         願每個孩子都能擁有平等的機會、豐足的信心，無所畏懼的說自己的生命故事。
       </span>
-    </div>
+    </div> -->
   </section>
 </template>
 
@@ -55,78 +60,72 @@ const descriptionImages: DescriptionType[] = [
 }
 
 .cases {
-  width: 100%;
+  width: 95%;
+  max-width: 75em;
+  margin-top: 2em;
 
   .case {
     display: flex;
-    width: 80%;
-    max-width: 1200px;
-    margin: 3em auto;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-evenly;
+    margin-bottom: 2em;
+    justify-content: center;
 
-    @media all and (max-width: 1020px) {
-      justify-content: center;
-    }
+    .description {
+      word-wrap: break-word;
 
-    &:nth-child(2n + 1) {
-      flex-direction: row-reverse;
+      > h1 {
+        position: relative;
+        margin-bottom: 8px;
+        font-size: 2rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        color: #6f6f6f;
 
-      .right {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-
-        .more {
-          right: inherit;
-          left: 0;
-        }
-      }
-    }
-
-    .right {
-      position: relative;
-      width: 400px;
-      height: 400px;
-
-      h1 {
-        font-size: 3rem;
-      }
-
-      span {
-        font-size: 1.5rem;
-        text-align: center;
-      }
-
-      .more {
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        padding: 2px;
-        margin-left: 1em;
-        font-size: 1.4rem;
-        font-weight: 900;
-        text-decoration: none;
-
-        &:hover::after {
-          animation: more-hover 0.5s forwards cubic-bezier(0.8, 0.1, 0.1, 0.8);
-        }
-
-        &::after {
+        &::before {
           position: absolute;
-          bottom: 0;
+          top: -8px;
           left: 0;
-          width: 100%;
-          height: 2px;
-          background-color: #000;
+          width: 47px;
+          height: 5px;
+          background: #6f6f6f;
           content: '';
-          transform: scaleX(0);
-          backface-visibility: hidden;
-          will-change: transform;
-          transform-origin: center right;
         }
       }
+
+      > p {
+        font-size: 18px;
+        color: #6f6f6f;
+      }
+    }
+
+    .image,
+    .description {
+      align-self: center;
+      max-width: 50%;
+    }
+
+    .image :deep(img) {
+      display: block;
+      width: 70%;
+      margin: 0 auto 20px;
+    }
+  }
+
+  @media (max-width: 1000px) {
+    max-width: 90%;
+
+    .case {
+      flex-direction: column-reverse;
+    }
+
+    .image,
+    .description {
+      max-width: initial !important;
+    }
+  }
+  @media (min-width: 1000px) {
+    :nth-child(2n + 1) .description {
+      order: 1;
+      padding-left: 1em;
     }
   }
 }
