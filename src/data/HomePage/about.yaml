@@ -1,3 +1,8 @@
+# https://little-dear-tree.github.io/#description-section
+# image: 圖片連結
+# title: 標題
+# description: 描述
+
 - image: '@/assets/image/logo.jpg'
   title:
     - Little.Dear.Tree
