@@ -21,7 +21,7 @@
     "sitemap-ts": "^0.2.2",
     "swiper": "^8.3.2",
     "tosource": "^2.0.0-alpha.3",
-    "vite": "^2.9.12",
+    "vite": "^2.9.13",
     "vite-plugin-svg-icons": "^2.0.1",
     "vite-ssg": "^0.20.2",
     "vue": "^3.2.37",
