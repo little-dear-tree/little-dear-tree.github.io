@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import FadeInUpScrollVue from '@/components/utils/anim/FadeInUpScroll.vue';
+
 interface DescriptionType {
   image: string;
   title?: string | string[];
@@ -133,7 +135,7 @@ const descriptionImages: DescriptionType[] = [
   }
 }
 
-.content {
+/* .content {
   margin-left: 1em;
 
   .title {
@@ -143,27 +145,5 @@ const descriptionImages: DescriptionType[] = [
   .description {
     font-size: 13pt;
   }
-}
-
-@keyframes more-hover {
-  0% {
-    transform: scale(1);
-    transform-origin: center right;
-  }
-
-  50% {
-    transform: scaleX(0);
-    transform-origin: center right;
-  }
-
-  55% {
-    transform: scaleX(0);
-    transform-origin: center left;
-  }
-
-  to {
-    transform: scale(1);
-    transform-origin: center left;
-  }
-}
+} */
 </style>
