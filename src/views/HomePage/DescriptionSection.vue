@@ -123,9 +123,12 @@ const descriptionImages: DescriptionType[] = [
     }
   }
   @media (min-width: 1000px) {
+    .description {
+      padding-left: 1em;
+    }
+
     :nth-child(2n + 1) .description {
       order: 1;
-      padding-left: 1em;
     }
   }
 }
