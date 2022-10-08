@@ -4,12 +4,9 @@ import 'swiper.css';
 import { Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 
-const images = [
-  { url: 'https://picsum.photos/1000/500?c=0', alt: 'test' },
-  { url: 'https://picsum.photos/1000/500?c=1', alt: 'test' },
-  { url: 'https://picsum.photos/1000/500?c=2', alt: 'test' },
-  { url: 'https://picsum.photos/1000/500?c=3', alt: 'test' },
-];
+import baseSlideshowData from '@/data/HomePage/slideshow.yaml';
+
+const slideshowData: string[] = baseSlideshowData;
 </script>
 
 <template>
@@ -21,8 +18,8 @@ const images = [
       :modules="[Autoplay]"
       class="pics-slide-block"
     >
-      <swiper-slide v-for="(img, index) in images" :key="index">
-        <div lazy-load :style="{ '--image-url': `url(${img.url})` }"></div>
+      <swiper-slide v-for="(img, index) in slideshowData" :key="index">
+        <div lazy-load :style="{ '--image-url': `url(${img})` }"></div>
       </swiper-slide>
     </swiper>
   </section>
