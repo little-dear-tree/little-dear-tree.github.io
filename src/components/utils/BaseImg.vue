@@ -6,6 +6,7 @@ import PreloaderLogo from '@/assets/image/mk-logo.png';
 const props = defineProps<{
   src: string;
   srcset?: string;
+  alt?: string;
 }>();
 const srcset = props.srcset || PreloaderLogo;
 
@@ -23,7 +24,7 @@ const onError = ({ target }: Event) => (target as HTMLDivElement).remove();
     :data-srcset="srcset"
     :class="{ done, error }"
   >
-    <img :src="src" @load="done = true" @error="onError" />
+    <img :alt="alt" :src="src" @load="done = true" @error="onError" />
     <div
       class="lazy-preloader"
       :style="{ '--srcset-url': `url(${srcset || PreloaderLogo})` }"

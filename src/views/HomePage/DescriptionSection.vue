@@ -6,6 +6,7 @@ import FadeInUpScrollVue from '@/components/utils/anim/FadeInUpScroll.vue';
 
 interface DescriptionType {
   image: string;
+  alt?: string;
   title?: string | string[];
   description?: string;
 }
@@ -49,7 +50,7 @@ const descriptionImages = reactive<DescriptionType[]>([]);
           <p v-text="img.description"></p>
         </div>
         <div class="image">
-          <LImg v-if="img.image" :src="img.image" />
+          <LImg v-if="img.image" :src="img.image" :alt="img.alt" />
         </div>
       </FadeInUpScrollVue>
     </div>
