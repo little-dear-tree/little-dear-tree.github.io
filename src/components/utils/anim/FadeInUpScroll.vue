@@ -9,30 +9,58 @@ import { ref } from 'vue';
 
 import { useIntersectionObserver } from '@vueuse/core';
 
+type UpDownType = 'up' | 'down';
+type EnterLeaveType = 'enter' | 'leave';
+type StateType = `${UpDownType}-${EnterLeaveType}`;
+
+const state = ref<StateType>();
 const isVisible = ref<boolean>();
 const rootEl = ref<HTMLDivElement>();
 
-const props = defineProps<{
+// eslint-disable-next-line vue/no-setup-props-destructure
+const { rootMargin, threshold, one, tTrue, tFalse, callback } = defineProps<{
   rootMargin?: string;
   threshold?: number | number[];
   one?: boolean;
+  tTrue?: StateType | StateType[];
+  tFalse?: StateType | StateType[];
   callback?: typeof defaultCallback;
 }>();
 
-const defaultCallback = (
-  [{ isIntersecting }]: IntersectionObserverEntry[],
-  _observer: IntersectionObserver
-) => {
-  isVisible.value = isIntersecting;
+let previousY = 0;
+let previousRatio = 0;
 
-  if ((props.one === void 0 || props.one) && isIntersecting) stop();
+const defaultCallback: (
+  ev: IntersectionObserverEntry[],
+  _observer: IntersectionObserver
+) => void = ([{ isIntersecting, boundingClientRect, intersectionRatio }]) => {
+  const { y } = boundingClientRect;
+
+  if (y < previousY) {
+    state.value =
+      intersectionRatio > previousRatio && isIntersecting
+        ? 'down-enter'
+        : 'down-leave';
+  } else if (y > previousY && isIntersecting) {
+    state.value = intersectionRatio < previousRatio ? 'up-leave' : 'up-enter';
+  }
+
+  previousY = y;
+  previousRatio = intersectionRatio;
+
+  if (tFalse?.includes(<StateType>(<unknown>state.value))) {
+    isVisible.value = false;
+  } else if (tTrue?.includes(<StateType>(<unknown>state.value))) {
+    isVisible.value = true;
+  } else isVisible.value = isIntersecting;
+
+  if ((one === void 0 || one) && isVisible.value) stop();
 };
 
-const { stop } = useIntersectionObserver(
-  rootEl,
-  props.callback || defaultCallback,
-  { threshold: props.threshold, rootMargin: props.rootMargin }
-);
+const { stop } = useIntersectionObserver(rootEl, callback || defaultCallback, {
+  threshold,
+  rootMargin,
+});
 </script>
 
 <style lang="scss" scoped>
