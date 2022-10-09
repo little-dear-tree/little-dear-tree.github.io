@@ -71,6 +71,7 @@ const descriptionImages = reactive<DescriptionType[]>([]);
 
   .case {
     display: flex;
+    min-height: 400px;
     margin-bottom: 2em;
     justify-content: center;
 

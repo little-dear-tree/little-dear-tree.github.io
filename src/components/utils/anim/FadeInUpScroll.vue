@@ -23,14 +23,16 @@ const defaultCallback = (
   [{ isIntersecting }]: IntersectionObserverEntry[],
   _observer: IntersectionObserver
 ) => {
-  if (props.one === void 0 || props.one) isVisible.value ||= isIntersecting;
-  else isVisible.value = isIntersecting;
+  isVisible.value = isIntersecting;
+
+  if ((props.one === void 0 || props.one) && isIntersecting) stop();
 };
 
-useIntersectionObserver(rootEl, props.callback || defaultCallback, {
-  threshold: props.threshold || 0.8,
-  rootMargin: props.rootMargin || '0px',
-});
+const { stop } = useIntersectionObserver(
+  rootEl,
+  props.callback || defaultCallback,
+  { threshold: props.threshold, rootMargin: props.rootMargin }
+);
 </script>
 
 <style lang="scss" scoped>
