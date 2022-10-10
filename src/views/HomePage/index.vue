@@ -11,6 +11,10 @@ const jsonLd: ArrayOrType<JsonLdObj> = [
   {
     '@type': 'Organization',
     name: 'little-dear-tree',
+    /* TODO 合法名稱 */
+    // legalName: '',
+    /* TODO 成立時間 */
+    // foundingDate: '2020',
     url: 'https://little-dear-tree.github.io/',
     logo: 'https://little-dear-tree.github.io/favicon/android-chrome-512x512.png',
     founders: [{ '@type': 'Person', name: '呂鍾伶' }],
