@@ -135,6 +135,10 @@ h2 {
 a {
   line-height: 1.75rem;
   color: #c9d1d9;
+
+  &:hover {
+    color: rgb(79 136 250);
+  }
 }
 
 svg ~ a {
