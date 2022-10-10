@@ -1,30 +1,31 @@
 <template>
   <Head>
     <title>{{ title }}</title>
+
+    <meta property="og:type" content="website" />
     <meta property="og:title" :content="title" />
     <meta property="og:site_name" :content="title" />
-    <meta property="twitter:title" :content="title" />
-
-    <meta name="description" :content="description" />
     <meta property="og:description" :content="description" />
-    <meta property="twitter:description" :content="description" />
-
-    <meta name="keywords" :content="keywords" />
-
     <meta v-if="image !== null" property="og:image" :content="image" />
     <meta
       v-if="image !== null"
       property="og:image:secure_url"
       :content="image"
     />
+
+    <meta property="twitter:title" :content="title" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:description" :content="description" />
     <meta v-if="image !== null" property="twitter:image" :content="image" />
 
-    <meta name="theme-color" content="#ffffff" />
-    <meta property="og:type" content="website" />
-    <meta property="twitter:card" content="summary_large_image" />
+    <meta name="description" :content="description" />
 
-    <meta name="abstract" content="vue-template" />
-    <meta name="subject" content="vue-template" />
+    <meta name="keywords" :content="keywords" />
+
+    <meta name="theme-color" content="#ffffff" />
+
+    <meta name="abstract" content="小鹿樹教育文化協會" />
+    <meta name="subject" content="小鹿樹教育文化協會" />
   </Head>
 </template>
 
