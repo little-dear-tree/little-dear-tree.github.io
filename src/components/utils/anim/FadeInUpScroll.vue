@@ -86,3 +86,8 @@ const { stop } = useIntersectionObserver(rootEl, callback || defaultCallback, {
   }
 }
 </style>
+<style lang="scss">
+body.no-js .fade-in-up-scroll {
+  opacity: 1;
+}
+</style>
