@@ -29,7 +29,8 @@ const slideshowData: string[] = baseSlideshowData;
 .pics-slide-block {
   display: flex;
   width: 100%;
-  height: 500px;
+  height: 85vh;
+  max-height: 950px;
 
   .swiper-slide {
     display: flex;

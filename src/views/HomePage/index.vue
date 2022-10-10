@@ -2,6 +2,7 @@
 import type { JsonLdObj } from 'jsonld/jsonld-spec';
 
 import { ArrayOrType } from '@/utils';
+import descriptionImagesData from '@/data/HomePage/about.yaml';
 
 import PicSection from './PicSection.vue';
 import DescriptionSection from './DescriptionSection.vue';
@@ -35,8 +36,9 @@ const jsonLd: ArrayOrType<JsonLdObj> = [
   <GeneralHead :json-ld="jsonLd" />
 
   <PicSection />
-  <DescriptionSection />
+  <DescriptionSection :images-data="descriptionImagesData" />
   <PurposeSection />
+  <DescriptionSection :images-data="descriptionImagesData" />
 </template>
 
 <style lang="scss" scoped></style>

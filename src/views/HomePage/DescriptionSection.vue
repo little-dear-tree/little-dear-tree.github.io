@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { reactive } from 'vue';
 
-import descriptionImagesData from '@/data/HomePage/about.yaml';
 import FadeInUpScrollVue from '@/components/utils/anim/FadeInUpScroll.vue';
+
+const props = defineProps<{ imagesData: DescriptionType[] }>();
 
 interface DescriptionType {
   image: string;
@@ -15,7 +16,7 @@ const modules = import.meta.glob('../../**/*');
 
 const descriptionImages = reactive<DescriptionType[]>([]);
 
-(descriptionImagesData as DescriptionType[]).map(async (data, index) => {
+(props.imagesData as DescriptionType[]).map(async (data, index) => {
   const { image } = data;
 
   if (!image.startsWith('@/')) {
