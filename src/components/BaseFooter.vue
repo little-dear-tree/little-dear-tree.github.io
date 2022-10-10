@@ -87,20 +87,23 @@ footer {
   }
   @media (max-width: 750px) {
     grid-template-columns: initial;
-
-    .else-info {
-      grid-row-start: -1;
-    }
   }
 }
 
 .else-info {
-  gap: 15px;
   display: grid;
+  justify-items: center;
+  gap: 15px;
   grid-template-columns: repeat(4, minmax(0, 1fr));
 
   @media (max-width: 1000px) {
+    margin-left: 10px;
+    justify-items: normal;
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  @media (max-width: 750px) {
+    margin: initial;
+    grid-row-start: -1;
   }
 }
 
