@@ -13,7 +13,6 @@ const jsonLd: ArrayOrType<JsonLdObj> = [
     name: 'little-dear-tree',
     url: 'https://little-dear-tree.github.io/',
     logo: 'https://little-dear-tree.github.io/favicon/android-chrome-512x512.png',
-    /* 創始人 */
     founders: [{ '@type': 'Person', name: '呂鍾伶' }],
     contactPoint: {
       '@type': 'ContactPoint',
