@@ -71,15 +71,18 @@
         </ul>
       </div>
     </div>
+    <hr />
+    Copyright © 2022 小鹿樹教育文化協會/Little Dear Tree All Rights Reserved.
   </footer>
 </template>
 
 <style lang="scss" scoped>
 footer {
   display: grid;
+  width: 100%;
+  max-width: 1400px;
   padding: 1em 2em;
-  color: white;
-  background-color: black;
+  margin: auto;
   grid-template-columns: 1fr 2fr;
 
   @media (max-width: 950px) {
@@ -125,22 +128,22 @@ footer {
 h1 {
   position: relative;
   margin-bottom: 8px;
-  font-size: 24px;
-  color: white;
+  font-size: 27px;
+  color: black;
 }
 
 h2 {
   margin-bottom: 8px;
   font-size: 18px;
-  color: white;
 }
 
 a {
   line-height: 1.75rem;
-  color: #c9d1d9;
+  color: #242629;
 
   &:hover {
     color: rgb(79 136 250);
+    text-decoration: none;
   }
 }
 
