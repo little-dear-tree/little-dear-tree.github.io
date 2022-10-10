@@ -99,10 +99,6 @@ footer {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
 
-  > div {
-    margin-bottom: 2rem;
-  }
-
   @media (max-width: 1000px) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -137,11 +133,11 @@ h2 {
 }
 
 a {
-  margin-left: 5px;
+  line-height: 1.75rem;
   color: #c9d1d9;
+}
 
-  &:hover {
-    color: rgb(87 161 244);
-  }
+svg ~ a {
+  margin-left: 5px;
 }
 </style>
