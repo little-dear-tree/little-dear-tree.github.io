@@ -1,74 +1,77 @@
 <template>
   <footer>
-    <!-- TODO div -->
+    <div class="info">
+      <div class="base-info">
+        <h1 class="name">小鹿樹教育文化協會</h1>
 
-    <div class="base-info">
-      <h1 class="name">小鹿樹教育文化協會</h1>
-
-      <div class="community">
-        <!-- email -->
-        <span
-          itemprop="email"
-          aria-label="Email: little.dear.tree2020@gmail.com"
-        >
-          <SvgIcon name="connection-mail" size="22px" color="#8b949e" />
-          <a href="mailto:little.dear.tree2020@gmail.com">
-            little.dear.tree2020@gmail.com
-          </a>
-        </span>
-
-        <!-- facebook -->
-        <span
-          itemprop="facebook"
-          aria-label="facebook: 小鹿樹教育文化協會/Little.Dear.Tree"
-        >
-          <SvgIcon name="connection-facebook" size="22px" color="#8b949e" />
-          <a
-            href="https://www.facebook.com/%E5%B0%8F%E9%B9%BF%E6%A8%B9%E6%95%99%E8%82%B2%E6%96%87%E5%8C%96%E5%8D%94%E6%9C%83LittleDearTree-101351098369983/"
+        <div class="community">
+          <!-- email -->
+          <span
+            itemprop="email"
+            aria-label="Email: little.dear.tree2020@gmail.com"
           >
-            小鹿樹教育文化協會/Little.Dear.Tree
-          </a>
-        </span>
+            <SvgIcon name="connection-mail" size="22px" color="#8b949e" />
+            <a href="mailto:little.dear.tree2020@gmail.com">
+              little.dear.tree2020@gmail.com
+            </a>
+          </span>
 
-        <!-- instagram -->
-        <span itemprop="instagram" aria-label="instagram: little.dear.tree2020">
-          <SvgIcon name="connection-instagram" size="22px" color="#8b949e" />
-          <a href="https://www.instagram.com/little.dear.tree2020">
-            little.dear.tree2020
-          </a>
-        </span>
+          <!-- facebook -->
+          <span
+            itemprop="facebook"
+            aria-label="facebook: 小鹿樹教育文化協會/Little.Dear.Tree"
+          >
+            <SvgIcon name="connection-facebook" size="22px" color="#8b949e" />
+            <a
+              href="https://www.facebook.com/%E5%B0%8F%E9%B9%BF%E6%A8%B9%E6%95%99%E8%82%B2%E6%96%87%E5%8C%96%E5%8D%94%E6%9C%83LittleDearTree-101351098369983/"
+            >
+              小鹿樹教育文化協會/Little.Dear.Tree
+            </a>
+          </span>
+
+          <!-- instagram -->
+          <span
+            itemprop="instagram"
+            aria-label="instagram: little.dear.tree2020"
+          >
+            <SvgIcon name="connection-instagram" size="22px" color="#8b949e" />
+            <a href="https://www.instagram.com/little.dear.tree2020">
+              little.dear.tree2020
+            </a>
+          </span>
+        </div>
       </div>
-    </div>
-    <div class="else-info">
-      <div>
-        <h2>了解更多</h2>
-        <ul>
-          <li><a href="">近期活動</a></li>
-          <li><a href="">人才招募</a></li>
-        </ul>
-      </div>
-      <div>
-        <h2>支持我們</h2>
-        <ul>
-          <li><a href="">捐款計畫</a></li>
-          <li><a href="">捐款徵信</a></li>
-          <li><a href="">感謝名單</a></li>
-        </ul>
-      </div>
-      <div>
-        <h2>佔位</h2>
-        <ul>
-          <li><a href="">佔位</a></li>
-          <li><a href="">佔位</a></li>
-        </ul>
-      </div>
-      <div>
-        <h2>佔位</h2>
-        <ul>
-          <li><a href="">佔位</a></li>
-          <li><a href="">佔位</a></li>
-          <li><a href="">佔位</a></li>
-        </ul>
+      <div class="else-info">
+        <div>
+          <h2>了解更多</h2>
+          <ul>
+            <li><a href="">近期活動</a></li>
+            <li><a href="">人才招募</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>支持我們</h2>
+          <ul>
+            <li><a href="">捐款計畫</a></li>
+            <li><a href="">捐款徵信</a></li>
+            <li><a href="">感謝名單</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>佔位</h2>
+          <ul>
+            <li><a href="">佔位</a></li>
+            <li><a href="">佔位</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>佔位</h2>
+          <ul>
+            <li><a href="">佔位</a></li>
+            <li><a href="">佔位</a></li>
+            <li><a href="">佔位</a></li>
+          </ul>
+        </div>
       </div>
     </div>
     <hr />
@@ -78,11 +81,13 @@
 
 <style lang="scss" scoped>
 footer {
-  display: grid;
-  width: 100%;
   max-width: 1400px;
-  padding: 1em 2em;
+  padding: 2em 1em;
   margin: auto;
+}
+
+.info {
+  display: grid;
   grid-template-columns: 1fr 2fr;
 
   @media (max-width: 950px) {
@@ -149,5 +154,9 @@ a {
 
 svg ~ a {
   margin-left: 5px;
+}
+
+hr {
+  margin: 1em 0;
 }
 </style>
