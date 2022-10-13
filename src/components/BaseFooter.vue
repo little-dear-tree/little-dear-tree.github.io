@@ -81,20 +81,40 @@
 
 <style lang="scss" scoped>
 footer {
+  width: 80%;
   max-width: 1400px;
   padding: 2em 1em;
-  margin: auto;
+  margin: 0 auto;
+
+  @media (max-width: 750px) {
+    width: 90%;
+
+    .info {
+      grid-template-columns: initial;
+
+      .else-info {
+        margin: initial;
+        grid-row-start: -1;
+        margin-bottom: 1em;
+      }
+    }
+  }
 }
 
 .info {
   display: grid;
   grid-template-columns: 1fr 2fr;
 
+  @media (max-width: 1000px) {
+    grid-template-columns: repeat(2, 1fr);
+
+    .else-info {
+      justify-items: normal;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
   @media (max-width: 950px) {
     grid-template-columns: repeat(2, 1fr);
-  }
-  @media (max-width: 750px) {
-    grid-template-columns: initial;
   }
 }
 
@@ -103,16 +123,6 @@ footer {
   justify-items: center;
   gap: 15px;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-
-  @media (max-width: 1000px) {
-    margin-left: 10px;
-    justify-items: normal;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-  @media (max-width: 750px) {
-    margin: initial;
-    grid-row-start: -1;
-  }
 }
 
 .base-info {
