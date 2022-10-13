@@ -47,6 +47,7 @@
           <ul>
             <li><a href="">近期活動</a></li>
             <li><a href="">人才招募</a></li>
+            <li><a href="">近期合作</a></li>
           </ul>
         </div>
         <div>
@@ -55,6 +56,9 @@
             <li><a href="">捐款計畫</a></li>
             <li><a href="">捐款徵信</a></li>
             <li><a href="">感謝名單</a></li>
+            <li>
+              <router-link to="/user-access-levels">會員身分說明</router-link>
+            </li>
           </ul>
         </div>
         <div>

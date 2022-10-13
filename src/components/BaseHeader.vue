@@ -11,7 +11,10 @@ const items = [
 <template>
   <header>
     <div class="menu-content">
-      <div class="menu-icon"></div>
+      <div class="menu-icon">
+        <!-- TODO add logo -->
+        <img src="" alt="logo" />
+      </div>
       <div v-for="(item, index) of items" :key="index" class="menu-item">
         <a
           :href="item.href"

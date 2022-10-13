@@ -7,6 +7,11 @@ const routes: RouteRecordRaw[] = [
     path: '/',
     component: () => import('@/views/HomePage/index.vue'),
   },
+  {
+    name: 'userAccessLevels',
+    path: '/user-access-levels',
+    component: () => import('@/views/userAccessLevels/index.vue'),
+  },
 ];
 
 export const options = (): RouterOptions => ({
