@@ -50,7 +50,7 @@ const props = defineProps<{
 const pageTitle = props.pageTitle || '';
 
 let _title: string | void = void 0;
-if (pageTitle) _title = `小鹿樹教育文化協會 | ${pageTitle}`;
+if (pageTitle) _title = `${pageTitle} | 小鹿樹教育文化協會`;
 
 const image = props.image === null ? null : props.image || logo;
 const keywords = (

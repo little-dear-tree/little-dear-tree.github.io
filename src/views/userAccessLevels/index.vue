@@ -1,4 +1,5 @@
 <template>
+  <GeneralHead page-title="會員身分說明" />
   <div class="mount">
     <h1>會員身分說明</h1>
     <h2>各身分權限/說明</h2>
