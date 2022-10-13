@@ -24,5 +24,6 @@ const { DEV } = import.meta.env;
 
 .content {
   flex-grow: 1;
+  min-height: 100%;
 }
 </style>
